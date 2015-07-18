@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var mongoUrl = 'mongodb://localhost/splitly';
+//var mongoUrl = 'mongodb://localhost/splitly';
+var mongoUrl = 'mongodb://mrkevjose:opensesm@ds047752.mongolab.com:47752/splitly';
 var mongoOptions = {};
 var Types = mongoose.Types;
 
