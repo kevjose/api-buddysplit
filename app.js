@@ -6,17 +6,20 @@ var morgan  = require('morgan'); // logger
 var db = require('./config/database');
 
 //Configuration
-app.set('port', (process.env.PORT || 3009));
+//app.set('port', (process.env.PORT || 3009));
 app.listen(process.env.PORT || 3009);
-app.use(bodyParser());
-app.use(morgan());
+var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
+app.use(bodyParser.urlencoded({'extended':'true'}));            // parse application/x-www-form-urlencoded
+app.use(bodyParser.json());                                     // parse application/json
+app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
+app.use(methodOverride());
 
 app.use(function(req, res, next) {
-	  res.header('Access-Control-Allow-Origin', '*');
-	  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With,Content-Type,Content-Range, Content-Disposition,Authorization,Accept');
-	  res.header('Access-Control-Allow-Methods', 'OPTIONS, HEAD,GET,PUT,POST,DELETE');
-	  next();
-	})
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With,Content-Type,Content-Range, Content-Disposition,Authorization,Accept');
+  res.header('Access-Control-Allow-Methods', 'OPTIONS, HEAD,GET,PUT,POST,DELETE');
+  next();
+})
 
 
 //Routes
