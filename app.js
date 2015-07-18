@@ -18,10 +18,11 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse applica
 app.use(methodOverride());
 
 app.use(function(req, res, next) {
-	res.setHeader('Access-Control-Allow-Origin', '*');
-	res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
-	res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
-	next();
+	res.set('Access-Control-Allow-Origin', '*');
+	res.set('Access-Control-Allow-Credentials', true);
+	res.set('Access-Control-Allow-Methods', 'GET, POST, DELETE, PUT');
+	res.set('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type');
+	if ('OPTIONS' == req.method) return res.send(200);
 });
 
 
