@@ -14,12 +14,14 @@ app.use(bodyParser.json());                                     // parse applica
 app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
 app.use(methodOverride());
 
-app.use(function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With,Content-Type,Content-Range, Content-Disposition,Authorization,Accept');
-  res.header('Access-Control-Allow-Methods', 'OPTIONS, HEAD,GET,PUT,POST,DELETE');
-  next();
-})
+app.all('*', function(req, res, next) {
+	res.set('Access-Control-Allow-Origin', '*');
+	res.set('Access-Control-Allow-Credentials', true);
+	res.set('Access-Control-Allow-Methods', 'GET, POST, DELETE, PUT');
+	res.set('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type');
+	if ('OPTIONS' == req.method) return res.send(200);
+	next();
+});
 
 
 //Routes
