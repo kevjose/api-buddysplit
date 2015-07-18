@@ -6,7 +6,8 @@ var appServices = angular.module('appServices', []);
 var appDirectives = angular.module('appDirectives', []);
 var appFilters = angular.module('appFilters', []);
 
-app.constant('Options', {baseUrl: 'http://localhost:3009'});
+//app.constant('Options', {baseUrl: 'http://localhost:3009'});
+//app.constant('Options', {baseUrl: 'https://ionic-socket.herokuapp.com'});
 
 app.config(function($stateProvider, $urlRouterProvider) {
 	$urlRouterProvider
@@ -295,7 +296,7 @@ appServices.factory('ExpensesService', function($http, $q, Options) {
 		create: function(expense) {
 			var deferred = $q.defer();
 
-			$http.post(Options.baseUrl + '/expenses', expense).success(function(data) {
+			$http.post('/expenses', expense).success(function(data) {
 				deferred.resolve(data);
 			}).error(function(data, status) {
 				deferred.reject(data);
@@ -307,7 +308,7 @@ appServices.factory('ExpensesService', function($http, $q, Options) {
 		readAllFromSheet: function(sheet_id) {
 			var deferred = $q.defer();
 
-			$http.get(Options.baseUrl + '/expenses/' + sheet_id).success(function(data) {
+			$http.get('/expenses/' + sheet_id).success(function(data) {
 				deferred.resolve(data);
 			}).error(function(data, status) {
 				deferred.reject(data);
@@ -319,7 +320,7 @@ appServices.factory('ExpensesService', function($http, $q, Options) {
 		read: function(sheet_id, id) {
 			var deferred = $q.defer();
 
-			$http.get(Options.baseUrl + '/expenses/' + sheet_id + '/' + id).success(function(data) {
+			$http.get( '/expenses/' + sheet_id + '/' + id).success(function(data) {
 				deferred.resolve(data);
 			}).error(function(data, status) {
 				deferred.reject(data);
@@ -331,7 +332,7 @@ appServices.factory('ExpensesService', function($http, $q, Options) {
 		update: function(expense) {
 			var deferred = $q.defer();
 
-			$http.put(Options.baseUrl + '/expenses', expense).success(function(data) {
+			$http.put( '/expenses', expense).success(function(data) {
 				deferred.resolve(data);
 			}).error(function(data, status) {
 				deferred.reject(data);
@@ -343,7 +344,7 @@ appServices.factory('ExpensesService', function($http, $q, Options) {
 		delete: function(sheet_id, id) {
 			var deferred = $q.defer();
 
-			$http.delete(Options.baseUrl + '/expenses/' + sheet_id + '/' + id).success(function(data) {
+			$http.delete( '/expenses/' + sheet_id + '/' + id).success(function(data) {
 				deferred.resolve(data);
 			}).error(function(data, status) {
 				deferred.reject(data);
@@ -358,7 +359,7 @@ appServices.factory('FriendsService', function($http, $q, Options) {
 		create: function(friend) {
 			var deferred = $q.defer();
 
-			$http.post(Options.baseUrl + '/friends', friend).success(function(data) {
+			$http.post( '/friends', friend).success(function(data) {
 				deferred.resolve(data);
 			}).error(function(data, status) {
 				deferred.reject(data);
@@ -370,7 +371,7 @@ appServices.factory('FriendsService', function($http, $q, Options) {
 		readAllFromSheet: function(sheet_id) {
 			var deferred = $q.defer();
 
-			$http.get(Options.baseUrl + '/friends/' + sheet_id).success(function(data) {
+			$http.get('/friends/' + sheet_id).success(function(data) {
 				deferred.resolve(data);
 			}).error(function(data, status) {
 				deferred.reject(data);
@@ -382,7 +383,7 @@ appServices.factory('FriendsService', function($http, $q, Options) {
 		read: function(sheet_id, id) {
 			var deferred = $q.defer();
 
-			$http.get(Options.baseUrl + '/friends/' + sheet_id + '/' + id).success(function(data) {
+			$http.get('/friends/' + sheet_id + '/' + id).success(function(data) {
 				deferred.resolve(data);
 			}).error(function(data, status) {
 				deferred.reject(data);
@@ -394,7 +395,7 @@ appServices.factory('FriendsService', function($http, $q, Options) {
 		update: function(friend) {
 			var deferred = $q.defer();
 
-			$http.put(Options.baseUrl + '/friends', friend).success(function(data) {
+			$http.put( '/friends', friend).success(function(data) {
 				deferred.resolve(data);
 			}).error(function(data, status) {
 				deferred.reject(data);
@@ -406,7 +407,7 @@ appServices.factory('FriendsService', function($http, $q, Options) {
 		delete: function(sheet_id, id) {
 			var deferred = $q.defer();
 
-			$http.delete(Options.baseUrl + '/friends/' + sheet_id + '/' + id).success(function(data) {
+			$http.delete('/friends/' + sheet_id + '/' + id).success(function(data) {
 				deferred.resolve(data);
 			}).error(function(data, status) {
 				deferred.reject(data);
@@ -421,7 +422,7 @@ appServices.factory('SheetsService', function($http, $q, Options) {
     create: function() {
       var deferred = $q.defer();
 
-      $http.post(Options.baseUrl + '/sheets', {}).success(function(data) {
+      $http.post('/sheets', {}).success(function(data) {
         deferred.resolve(data);
       }).error(function(data, status) {
         deferred.reject(data);
@@ -433,7 +434,7 @@ appServices.factory('SheetsService', function($http, $q, Options) {
     read: function(id) {
       var deferred = $q.defer();
 
-      $http.get(Options.baseUrl + '/sheets/' + id).success(function(data) {
+      $http.get('/sheets/' + id).success(function(data) {
         deferred.resolve(data);
       }).error(function(data, status) {
         deferred.reject(data);
@@ -445,7 +446,7 @@ appServices.factory('SheetsService', function($http, $q, Options) {
     update: function(sheet) {
       var deferred = $q.defer();
 
-      $http.put(Options.baseUrl + '/sheets', sheet).success(function(data) {
+      $http.put( + '/sheets', sheet).success(function(data) {
         deferred.resolve(data);
       }).error(function(data, status) {
         deferred.reject(data);
