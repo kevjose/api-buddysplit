@@ -54,8 +54,5 @@ app.delete('/expenses/:sheet_id/:id', routes.expenses.delete);
 
 app.get('/stats', routes.stats.read);
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
 
 console.log('[INFO] Your project API started on port 3009');
