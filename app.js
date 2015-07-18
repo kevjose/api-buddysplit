@@ -15,7 +15,7 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse applica
 app.use(methodOverride());
 
 app.use(function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'https://buddysplit.herokuapp.com');
+  res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With,Content-Type,Content-Range, Content-Disposition,Authorization,Accept');
   res.header('Access-Control-Allow-Methods', 'OPTIONS, HEAD,GET,PUT,POST,DELETE');
   next();
