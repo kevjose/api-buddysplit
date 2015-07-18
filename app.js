@@ -1,4 +1,4 @@
-//express app
+//express app starts
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser'); //bodyparser + json + urlencoder
