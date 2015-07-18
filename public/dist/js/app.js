@@ -90,8 +90,9 @@ appControllers.controller('SheetsCtrl', ['$scope', '$location', '$state', '$stat
 	  	$scope.today();
 
 		$scope.saveSheetName = function(name) {
+			console.log("in"+name);
 			if (name != null && name.trim().length > 0) {
-
+				console.log("in"+name);
 				SheetsService.update({_id: sheet_id, name: name.trim()}).then(function(data) {
 					$scope.sheet.name = name.trim();
 					return $state.go('sheets.overview', {id: $scope.sheet._id});
@@ -446,9 +447,11 @@ appServices.factory('SheetsService', function($http, $q) {
     update: function(sheet) {
       var deferred = $q.defer();
 
-      $http.put( + '/sheets', sheet).success(function(data) {
+      $http.put('/sheets', sheet).success(function(data) {
+    	  console.log("success");
         deferred.resolve(data);
       }).error(function(data, status) {
+    	  console.log("error");
         deferred.reject(data);
       });
 
