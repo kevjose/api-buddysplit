@@ -5,7 +5,8 @@ var morgan  = require('morgan'); // logger
 var db = require('./config/database');
 
 //Configuration
-app.listen(3009);
+app.set('port', (process.env.PORT || 3009));
+app.listen(process.env.PORT || 3009);
 app.use(bodyParser());
 app.use(morgan());
 
