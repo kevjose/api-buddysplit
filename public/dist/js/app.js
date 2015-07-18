@@ -291,7 +291,7 @@ appServices.factory('BalanceService', function() {
 
 	};
 });
-appServices.factory('ExpensesService', function($http, $q, Options) {
+appServices.factory('ExpensesService', function($http, $q) {
 	return {
 		create: function(expense) {
 			var deferred = $q.defer();
@@ -354,7 +354,7 @@ appServices.factory('ExpensesService', function($http, $q, Options) {
 		}
 	}
 });
-appServices.factory('FriendsService', function($http, $q, Options) {
+appServices.factory('FriendsService', function($http, $q) {
 	return {
 		create: function(friend) {
 			var deferred = $q.defer();
@@ -417,7 +417,7 @@ appServices.factory('FriendsService', function($http, $q, Options) {
 		}
 	}
 });
-appServices.factory('SheetsService', function($http, $q, Options) {
+appServices.factory('SheetsService', function($http, $q) {
   return {
     create: function() {
       var deferred = $q.defer();
