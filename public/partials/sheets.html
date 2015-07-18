@@ -1,0 +1,17 @@
+<div class="container">
+	<div class="row">
+		<div class="menu">
+			<ul>
+				<li><a ui-sref="sheets.overview({id: sheet._id})" ui-sref-active="active">Overview</a></li>
+				<li><a ui-sref="sheets.friends({id: sheet._id})" ui-sref-active="active">Friends</a></li>
+				<li><a ui-sref="sheets.expenses({id: sheet._id})" ui-sref-active="active">Expenses</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="sheet" ui-view>
+			
+		</div>
+	</div>
+</div>

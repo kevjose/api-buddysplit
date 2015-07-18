@@ -16,13 +16,13 @@ app.use(bodyParser.urlencoded({'extended':'true'}));            // parse applica
 app.use(bodyParser.json());                                     // parse application/json
 app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
 app.use(methodOverride());
+app.use(express.static(__dirname + '/public'));  
 
 app.use(function(req, res, next) {
-	res.set('Access-Control-Allow-Origin', '*');
-	res.set('Access-Control-Allow-Credentials', true);
-	res.set('Access-Control-Allow-Methods', 'GET, POST, DELETE, PUT');
-	res.set('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type');
-	if ('OPTIONS' == req.method) return res.send(200);
+	res.setHeader('Access-Control-Allow-Origin', '*');
+	res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+	res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
+	next();
 });
 
 
