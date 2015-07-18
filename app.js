@@ -6,8 +6,8 @@ var morgan  = require('morgan'); // logger
 var db = require('./config/database');
 
 //Configuration
-//app.set('port', (process.env.PORT || 3009));
-app.listen(process.env.PORT || 3009);
+app.set('port', (process.env.PORT || 8080));
+app.listen(process.env.PORT || 8080);
 
 var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
 app.use(bodyParser.urlencoded({'extended':'true'}));            // parse application/x-www-form-urlencoded
