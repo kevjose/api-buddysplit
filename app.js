@@ -7,7 +7,10 @@ var db = require('./config/database');
 
 //Configuration
 //app.set('port', (process.env.PORT || 3009));
-app.listen(process.env.PORT || 3009);
+//app.listen(process.env.PORT || 3009);
+var server = app.listen(process.env.PORT || 3009, function(){
+    console.log('App listeining on', server.address().port);
+})
 var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
 app.use(bodyParser.urlencoded({'extended':'true'}));            // parse application/x-www-form-urlencoded
 app.use(bodyParser.json());                                     // parse application/json
